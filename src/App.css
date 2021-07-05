@@ -23,8 +23,7 @@
 }
 
 header{
-  background-color: var(--black);
-  border-bottom: 4px solid var(--teal);
+  background-color: var(--teal);
   /* min-height: 100px; */
 }
 
@@ -32,6 +31,7 @@ main {
   background-color: black;
   position: relative;
   min-height: 80vh;
+  overflow: hidden;
 }
 
 footer {
@@ -43,4 +43,9 @@ footer {
 .emoji-wrapper {
   position: absolute;
   bottom: -1rem;
+  left: 49vw;
+}
+
+.emoji-inner {
+  background-color: var(--red);
 }

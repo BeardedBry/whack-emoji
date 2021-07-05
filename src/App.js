@@ -6,12 +6,20 @@ import './App.css';
 function App() {
 
   const [emojis, setEmojis] = useState(['']);
+  const [spawnTime, setSpawnTime] = useState(1000);
+
+  function handleWhack(e){
+    console.log(e.target);
+  }
+
 
   useEffect(()=>{
-    setTimeout(()=>{
-      setEmojis([...emojis, <Emoji />]);
-    },1000);
+    setTimeout(function emojiSpawn(){
+      setEmojis([...emojis, <Emoji key={Date.now().toString()} handleWhack={handleWhack} />]);
+    },spawnTime);
   },[]);
+
+
 
   return (
     <div className="App">
