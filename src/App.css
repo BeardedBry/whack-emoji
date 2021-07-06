@@ -48,4 +48,12 @@ footer {
 
 .emoji-inner {
   background-color: var(--red);
+  height: .95rem;
+  width: .95rem;
+  border-radius: 50%;
+}
+.emoji{
+  position: absolute;
+  left: -.75px;
+  top: -2.3px;
 }
