@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Anime, { anime } from 'react-anime';
 
 // Function to generate random number 
@@ -8,14 +8,11 @@ function rando(min, max) {
 
 const Emoji = (props) => {
 
+    const [alive, setAlive] = useState(true);
 
     const veiwHeight = rando(10, 80);
-    const veiwWidth = rando(5, 45);
+    const veiwWidth = rando(10, 40);
     const direction = ['-', '+'][rando(0, 1)];
-
-    console.log(direction);
-    console.log('vw: ', veiwWidth);
-    console.log('vh: ', veiwHeight);
 
     const animeProps = {
         loop: false,
@@ -44,22 +41,32 @@ const Emoji = (props) => {
             duration: 1000,
         },
         {
-            value: 12,
+            value: rando(10,15),
             easing: 'cubicBezier(0.000, 0.000, 0.580, 1.000);',
             duration: 1000,
         }],
         rotate: [{ value: -360, duration: 1000, easing: 'cubicBezier(0.420, 0.000, 1.000, 1.000)', }, { value: -720, duration: 1000, easing: 'linear' }]
     };
 
-    return (
+    function emojiClicked(e){
+        props.handleWhack(e, (match)=>{
+            if(match){
+                setAlive(false)
+            }else{
+
+            }
+        });
+    }
+
+    return alive ? (
         <div className="emoji-wrapper">
             <Anime {...animeProps} >
-                <div className="emoji-inner" onClick={props.handleWhack}>
+                <div className="emoji-inner" onClick={emojiClicked}>
                     <span className="emoji">😀</span>
                 </div>
             </Anime>
         </div>
-    );
+    ) : null;
 }
 
 export default Emoji;
