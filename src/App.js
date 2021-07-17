@@ -17,9 +17,13 @@ function App() {
 
   useEffect(()=>{
     setTimeout(function emojiSpawn(){
-      setEmojis((emojis) => [...emojis, <Emoji key={Date.now().toString()} handleWhack={handleWhack} 
-        />]);
+      setEmojis((emojis) => {
+        const zindex = -emojis.length;
+        console.log(-emojis.length);
+        return [...emojis, <Emoji key={Date.now().toString()} handleWhack={handleWhack} z={zindex}/>]
+      });
         setTimeout(emojiSpawn,spawnTime)
+        setSpawnTime(spawnTime-100);
     },spawnTime);
   },[]);
 

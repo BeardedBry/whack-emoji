@@ -47,7 +47,7 @@ footer {
 }
 
 .emoji-inner {
-  background-color: var(--red);
+  /* background-color: var(--red); */
   height: .95rem;
   width: .95rem;
   border-radius: 50%;

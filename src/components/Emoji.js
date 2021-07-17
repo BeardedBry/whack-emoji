@@ -13,6 +13,7 @@ const Emoji = (props) => {
     const veiwHeight = rando(10, 80);
     const veiwWidth = rando(10, 40);
     const direction = ['-', '+'][rando(0, 1)];
+    const rotation = rando(0, 720);
 
     const animeProps = {
         loop: false,
@@ -45,7 +46,7 @@ const Emoji = (props) => {
             easing: 'cubicBezier(0.000, 0.000, 0.580, 1.000);',
             duration: 1000,
         }],
-        rotate: [{ value: -360, duration: 1000, easing: 'cubicBezier(0.420, 0.000, 1.000, 1.000)', }, { value: -720, duration: 1000, easing: 'linear' }]
+        rotate: [{ value: `${direction}${rotation}`, duration: 1000, easing: 'cubicBezier(0.420, 0.000, 1.000, 1.000)', }, { value: `${direction}${rotation * 2}`, duration: 1000, easing: 'linear' }]
     };
 
     function emojiClicked(e){
@@ -62,7 +63,7 @@ const Emoji = (props) => {
         <div className="emoji-wrapper">
             <Anime {...animeProps} >
                 <div className="emoji-inner" onClick={emojiClicked}>
-                    <span className="emoji">😀</span>
+                    <span className="emoji" style={{zIndex: props.z}}>😀</span>
                 </div>
             </Anime>
         </div>
