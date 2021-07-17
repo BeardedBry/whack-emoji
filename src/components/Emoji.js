@@ -46,7 +46,14 @@ const Emoji = (props) => {
             easing: 'cubicBezier(0.000, 0.000, 0.580, 1.000);',
             duration: 1000,
         }],
-        rotate: [{ value: `${direction}${rotation}`, duration: 1000, easing: 'cubicBezier(0.420, 0.000, 1.000, 1.000)', }, { value: `${direction}${rotation * 2}`, duration: 1000, easing: 'linear' }]
+        rotate: [{ value: `${direction}${rotation}`, duration: 1000, easing: 'cubicBezier(0.420, 0.000, 1.000, 1.000)', }, { value: `${direction}${rotation * 2}`, duration: 1000, easing: 'linear' }],
+        update: function(e){
+            e.finished.then(()=>{
+                if(alive === true){
+                    setAlive(false);
+                }
+            })
+        }
     };
 
     function emojiClicked(e){
@@ -60,10 +67,10 @@ const Emoji = (props) => {
     }
 
     return alive ? (
-        <div className="emoji-wrapper">
+        <div className="emoji-wrapper" style={{zIndex: props.z}}>
             <Anime {...animeProps} >
                 <div className="emoji-inner" onClick={emojiClicked}>
-                    <span className="emoji" style={{zIndex: props.z}}>😀</span>
+                    <span className="emoji">😀</span>
                 </div>
             </Anime>
         </div>
