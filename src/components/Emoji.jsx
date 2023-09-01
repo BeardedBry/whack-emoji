@@ -60,6 +60,7 @@ const Emoji = (props) => {
         props.handleWhack(e, (match)=>{
             if(match){
                 setAlive(false)
+                props.setScore((score) => score + 10);
             }else{
 
             }
